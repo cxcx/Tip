@@ -1,5 +1,6 @@
 package httpService;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -36,8 +37,19 @@ public class getInternet {
 	}
 	public String changeInputstream(InputStream inputStream) {
 		String jsonString = "";
-		
-		
+		int len = 0;
+		byte data[] = new byte[1024];
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		try {
+			while((len = inputStream.read(data))!=-1)
+			{
+				byteArrayOutputStream.write(data, 0, len);				
+			}					
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jsonString = new String(byteArrayOutputStream.toByteArray());
 		return jsonString;
 	}
 	
