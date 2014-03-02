@@ -33,19 +33,20 @@ public class MainActivity extends Activity {
 		getInternet getinternet = new getInternet();
 		InputStream inputStream = getinternet.getInputStream();
 		String jsonString = getinternet.changeInputstream(inputStream);
+		JSONObject jsonObject;
 		try {
-			JSONObject jsonObject = json_service.get_jsonObject("weatherinfo",
-					jsonString);
-			String city = jsonObject.getString("weather");
-			Log.i("city", city);
-			//Log.i("templ", String.valueOf(temp_l));
-			//Log.i("temph", String.valueOf(temp_h));
-			//Log.i("weather", weather);
+			jsonObject = json_service.get_jsonObject("weatherinfo", jsonString);
+			String city = jsonObject.getString("city");
+			String temp_H = jsonObject.getString("temp1");
+			String temp_L = jsonObject.getString("temp2");
+			String weather = jsonObject.getString("weather");
+			textView.setText(city+"\n"+temp_H+"\n"+temp_L+"\n"+weather);
+			
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 
 	}
 

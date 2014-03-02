@@ -11,7 +11,7 @@ import java.net.URLConnection;
 import android.util.Log;
 
 public class getInternet {
-	private final String url_path = "http://www.weather.com.cn/data/cityinfo/101010100.html";
+	private final String url_path = "http://www.weather.com.cn/data/cityinfo/101210101.html";
 	public InputStream getInputStream() {
 		InputStream inputStream = null;
 		try {
